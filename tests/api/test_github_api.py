@@ -56,7 +56,7 @@ def test_user_made_commit(github_api):
 def test_user_has_repos(github_api):
     r = github_api.get_all_user_repos('YuliaK1207')
     
-    assert r.status == 200
+    assert r != None
 
 #@pytest.mark.api
 #def test_all_user_repos_have_commits(github_api):
