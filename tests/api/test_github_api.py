@@ -31,3 +31,37 @@ def test_repo_cannot_be_found(github_api):
 def test_repo_with_single_char_be_found(github_api):
     r = github_api.search_repo('s')
     assert r['total_count'] != 0
+
+
+@pytest.mark.api
+def test_emoji_exists(github_api):
+    r = github_api.get_emoji_url('heart')
+    assert r == 'https://github.githubassets.com/images/icons/emoji/unicode/2764.png?v8'
+
+
+@pytest.mark.api
+def test_emoji_cannot_be_found(github_api):
+    r = github_api.get_emoji_url('seahorse')
+    assert r == None
+
+
+@pytest.mark.api
+def test_user_made_commit(github_api):
+    r = github_api.get_commit('YuliaK1207', 'jenkins-pytest', 'heads/main', 'message')
+    
+    assert r['message'] != None
+
+
+@pytest.mark.api
+def test_user_has_repos(github_api):
+    r = github_api.get_all_user_repos('YuliaK1207')
+    
+    assert r.status == 200
+
+#@pytest.mark.api
+#def test_all_user_repos_have_commits(github_api):
+    #r = github_api.get_all_user_repos('YuliaK1207')
+    
+    #print (r)
+
+
