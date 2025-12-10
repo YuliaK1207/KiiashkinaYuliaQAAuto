@@ -32,6 +32,7 @@ def test_repo_with_single_char_be_found(github_api):
     r = github_api.search_repo('s')
     assert r['total_count'] != 0
 
+#Individual task
 
 @pytest.mark.api
 def test_emoji_exists(github_api):
@@ -58,10 +59,6 @@ def test_user_has_repos(github_api):
     
     assert r != None
 
-#@pytest.mark.api
-#def test_all_user_repos_have_commits(github_api):
-    #r = github_api.get_all_user_repos('YuliaK1207')
-    
-    #print (r)
+
 
 
