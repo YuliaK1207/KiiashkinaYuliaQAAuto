@@ -57,4 +57,23 @@ class Database():
         record = self.cursor.fetchall()
         return record
     
+    #Individual task
+    def get_all_products(self):
+        query = "SELECT id, name, description, quantity FROM products"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record
+    
+    def get_product_info_by_name(self, name):
+        query = f"SELECT id, description, quantity FROM products WHERE name = '{name}'"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record
+    
+    def get_product_info_by_id(self, id):
+        query = f"SELECT name, description, quantity FROM products WHERE id = {id}"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record
+    
         

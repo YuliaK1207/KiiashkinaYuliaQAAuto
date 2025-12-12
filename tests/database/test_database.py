@@ -68,3 +68,40 @@ def test_detailed_orders():
     assert orders[0][1] == 'Sergii'
     assert orders[0][2] == 'солодка вода'
     assert orders[0][3] == 'з цукром'
+
+    # Individual task
+
+@pytest.mark.database
+def test_check_all_products():
+    db = Database()
+    products = db.get_all_products()
+
+    print(products)
+
+@pytest.mark.database
+def test_check_product_milk():
+    db = Database()
+    product = db.get_product_info_by_name('молоко')
+
+    assert product[0][0] == 3
+    assert product[0][1] == 'натуральне незбиране'
+    assert product[0][2] == 10
+    
+
+    # Check type of data
+@pytest.mark.database
+def test_check_data_type_():
+    db = Database()
+    products = db.get_all_products()
+
+    assert isinstance(5, int)
+    assert isinstance('печиво', str)
+    assert isinstance('солоне', str)
+    assert isinstance(45, int)
+
+    
+
+
+    
+
+    
